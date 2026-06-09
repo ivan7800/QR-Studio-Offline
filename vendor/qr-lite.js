@@ -1267,17 +1267,19 @@ function build(text){
   return {size:qr.getModuleCount(),modules:qr.modules.map(function(row){return row.map(Boolean)}),version:qr.typeNumber,bytes:new TextEncoder().encode(String(text)).length};
 }
 function draw(canvas,text,opt){
-  opt=opt||{}; var qr=build(text), size=opt.size||420, margin=Number(opt.margin==null?3:opt.margin), fg=opt.foreground||'#111827', bg=opt.background||'#fff';
-  canvas.width=canvas.height=size; var ctx=canvas.getContext('2d'); var cell=size/(qr.size+margin*2);
-  ctx.fillStyle=bg; ctx.fillRect(0,0,size,size); ctx.fillStyle=fg;
-  for(var y=0;y<qr.size;y++) for(var x=0;x<qr.size;x++) if(qr.modules[y][x]) ctx.fillRect(Math.round((x+margin)*cell),Math.round((y+margin)*cell),Math.ceil(cell),Math.ceil(cell));
+  opt=opt||{}; var qr=build(text), size=opt.size||420, margin=Number(opt.margin==null?4:opt.margin), fg=opt.foreground||'#111827', bg=opt.background||'#fff';
+  canvas.width=canvas.height=size; var ctx=canvas.getContext('2d');
+  var total=qr.size+margin*2; var cell=Math.max(1, Math.floor(size/total)); var real=cell*total; var offset=Math.floor((size-real)/2);
+  ctx.imageSmoothingEnabled=false; ctx.fillStyle=bg; ctx.fillRect(0,0,size,size); ctx.fillStyle=fg;
+  for(var y=0;y<qr.size;y++) for(var x=0;x<qr.size;x++) if(qr.modules[y][x]) ctx.fillRect(offset+(x+margin)*cell,offset+(y+margin)*cell,cell,cell);
   return qr;
 }
 function esc(v){return String(v).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
 function svg(text,opt){
   opt=opt||{}; var qr=build(text), margin=Number(opt.margin==null?3:opt.margin), fg=opt.foreground||'#111827', bg=opt.background||'#fff', size=opt.size||420, unit=size/(qr.size+margin*2);
-  var r='<svg xmlns="http://www.w3.org/2000/svg" width="'+size+'" height="'+size+'" viewBox="0 0 '+size+' '+size+'" role="img"><rect width="100%" height="100%" fill="'+esc(bg)+'"/>';
-  for(var y=0;y<qr.size;y++) for(var x=0;x<qr.size;x++) if(qr.modules[y][x]) r+='<rect x="'+((x+margin)*unit).toFixed(3)+'" y="'+((y+margin)*unit).toFixed(3)+'" width="'+unit.toFixed(3)+'" height="'+unit.toFixed(3)+'" fill="'+esc(fg)+'"/>';
+  var total=qr.size+margin*2; var cell=Math.max(1, Math.floor(size/total)); var real=cell*total; var offset=Math.floor((size-real)/2);
+  var r='<svg xmlns="http://www.w3.org/2000/svg" width="'+size+'" height="'+size+'" viewBox="0 0 '+size+' '+size+'" role="img" shape-rendering="crispEdges"><rect width="100%" height="100%" fill="'+esc(bg)+'"/>';
+  for(var y=0;y<qr.size;y++) for(var x=0;x<qr.size;x++) if(qr.modules[y][x]) r+='<rect x="'+(offset+(x+margin)*cell)+'" y="'+(offset+(y+margin)*cell)+'" width="'+cell+'" height="'+cell+'" fill="'+esc(fg)+'"/>';
   return r+'</svg>';
 }
 global.QRLite={build:build,draw:draw,svg:svg};

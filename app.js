@@ -68,7 +68,7 @@ function collectValues() {
 function updateQr() {
   try {
     const values = collectValues();
-    const text = types[state.currentType].build(values);
+    const text = types[state.currentType].build(values).trim();
     if (!text) throw new Error('Introduce contenido para generar el QR.');
     state.currentText = text;
     state.lastQr = QRLite.draw($('qrCanvas'), text, getDesignOptions());
@@ -82,7 +82,7 @@ function updateQr() {
 }
 
 function getDesignOptions() {
-  return { size: clamp(+$('qrSize').value || 420, 160, 1200), margin: clamp(+$('qrMargin').value || 0, 0, 10), foreground: $('qrColor').value, background: $('bgColor').value };
+  return { size: clamp(+$('qrSize').value || 420, 160, 1200), margin: clamp(+$('qrMargin').value || 4, 4, 10), foreground: $('qrColor').value, background: $('bgColor').value };
 }
 
 function setError(message) {
