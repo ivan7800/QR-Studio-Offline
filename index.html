@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111827">
+  <meta name="description" content="QR Studio Offline: generador local de códigos QR privado, rápido y offline-first.">
+  <title>QR Studio Offline</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="app-header">
+    <div>
+      <p class="eyebrow">100% local · sin CDN · offline-first</p>
+      <h1>QR Studio Offline</h1>
+      <p class="subtitle">Genera QR profesionales para texto, URL, WiFi, contacto, eventos y más.</p>
+    </div>
+    <button id="themeToggle" class="ghost-btn" type="button" aria-label="Cambiar modo claro u oscuro">🌙</button>
+  </header>
+
+  <main class="layout">
+    <section class="panel form-panel" aria-labelledby="generatorTitle">
+      <div class="section-title">
+        <h2 id="generatorTitle">Contenido</h2>
+        <span id="privacyBadge">Privado en tu navegador</span>
+      </div>
+
+      <label class="field">
+        <span>Tipo de QR</span>
+        <select id="qrType"></select>
+      </label>
+
+      <div id="dynamicFields" class="dynamic-fields"></div>
+
+      <div class="section-title compact">
+        <h2>Diseño</h2>
+      </div>
+      <div class="grid-2">
+        <label class="field"><span>Tamaño</span><input id="qrSize" type="number" min="160" max="1200" step="20" value="420"></label>
+        <label class="field"><span>Margen</span><input id="qrMargin" type="number" min="0" max="10" step="1" value="3"></label>
+        <label class="field"><span>Color QR</span><input id="qrColor" type="color" value="#111827"></label>
+        <label class="field"><span>Fondo</span><input id="bgColor" type="color" value="#ffffff"></label>
+      </div>
+
+      <div id="errorBox" class="error-box" role="alert" hidden></div>
+    </section>
+
+    <section class="panel preview-panel" aria-labelledby="previewTitle">
+      <div class="section-title">
+        <h2 id="previewTitle">Previsualización</h2>
+        <span id="qrMeta">Listo</span>
+      </div>
+      <div class="qr-stage">
+        <canvas id="qrCanvas" width="420" height="420" aria-label="Código QR generado"></canvas>
+      </div>
+      <div class="actions">
+        <button id="downloadPng" type="button">Descargar PNG</button>
+        <button id="downloadSvg" type="button" class="secondary">Descargar SVG</button>
+        <button id="copyPng" type="button" class="secondary">Copiar imagen</button>
+      </div>
+      <p id="statusText" class="status" aria-live="polite"></p>
+    </section>
+
+    <section class="panel history-panel" aria-labelledby="historyTitle">
+      <div class="section-title">
+        <h2 id="historyTitle">Historial local</h2>
+        <button id="clearHistory" class="danger-link" type="button">Borrar</button>
+      </div>
+      <div id="historyList" class="history-list"></div>
+    </section>
+  </main>
+
+  <footer class="footer">Hecho para funcionar en local. Tus datos no salen del dispositivo.</footer>
+
+  <script src="vendor/qr-lite.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192" width="192" height="192">
+  <rect width="192" height="192" rx="36" fill="#111827"/>
+  <!-- Finder TL -->
+  <rect x="24" y="24" width="64" height="64" rx="10" fill="#60a5fa"/>
+  <rect x="36" y="36" width="40" height="40" rx="6" fill="#111827"/>
+  <rect x="46" y="46" width="20" height="20" rx="3" fill="#60a5fa"/>
+  <!-- Finder TR -->
+  <rect x="104" y="24" width="64" height="64" rx="10" fill="#60a5fa"/>
+  <rect x="116" y="36" width="40" height="40" rx="6" fill="#111827"/>
+  <rect x="126" y="46" width="20" height="20" rx="3" fill="#60a5fa"/>
+  <!-- Finder BL -->
+  <rect x="24" y="104" width="64" height="64" rx="10" fill="#60a5fa"/>
+  <rect x="36" y="116" width="40" height="40" rx="6" fill="#111827"/>
+  <rect x="46" y="126" width="20" height="20" rx="3" fill="#60a5fa"/>
+  <!-- Data dots -->
+  <rect x="110" y="110" width="12" height="12" rx="2" fill="#60a5fa"/>
+  <rect x="128" y="110" width="12" height="12" rx="2" fill="#60a5fa"/>
+  <rect x="146" y="110" width="12" height="12" rx="2" fill="#60a5fa"/>
+  <rect x="164" y="110" width="12" height="12" rx="2" fill="#60a5fa"/>
+  <rect x="110" y="128" width="12" height="12" rx="2" fill="#60a5fa"/>
+  <rect x="146" y="128" width="12" height="12" rx="2" fill="#60a5fa"/>
+  <rect x="110" y="146" width="12" height="12" rx="2" fill="#60a5fa"/>
+  <rect x="128" y="146" width="12" height="12" rx="2" fill="#60a5fa"/>
+  <rect x="164" y="146" width="12" height="12" rx="2" fill="#60a5fa"/>
+  <rect x="128" y="164" width="12" height="12" rx="2" fill="#60a5fa"/>
+  <rect x="146" y="164" width="12" height="12" rx="2" fill="#60a5fa"/>
+  <rect x="164" y="164" width="12" height="12" rx="2" fill="#60a5fa"/>
+</svg>

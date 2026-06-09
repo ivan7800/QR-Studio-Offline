@@ -1,0 +1,18 @@
+{
+  "name": "QR Studio Offline",
+  "short_name": "QR Studio",
+  "description": "Generador profesional de códigos QR local, privado y offline-first.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#0b1020",
+  "theme_color": "#111827",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "./icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
