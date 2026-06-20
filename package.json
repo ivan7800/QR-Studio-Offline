@@ -1,0 +1,14 @@
+{
+  "name": "qr-studio-offline",
+  "version": "6.0.0",
+  "private": true,
+  "description": "Generador QR local, privado y offline-first listo para GitHub Pages.",
+  "scripts": {
+    "check": "node --check app.js && node --check sw.js && node --check vendor/qr-lite.js",
+    "serve": "python3 -m http.server 4173",
+    "test:e2e": "playwright test"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.61.0"
+  }
+}
